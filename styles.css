@@ -1,0 +1,36 @@
+body {
+  font-family: palatino;
+  line-height: 1.2;
+}
+
+.main-image {
+  width: 340px;
+  max-width: 100%;
+  margin-bottom: 0.8rem;
+  cursor: pointer;
+  display: block;
+  filter: hue-rotate(-10deg) brightness(0.33);
+}
+
+.main-image.playing {
+  filter: hue-rotate(20deg) brightness(1.16);
+}
+
+.contact-info {
+  color: gray;
+}
+
+.left-arrow,
+.right-arrow {
+  position: fixed;
+  bottom: 0.5rem;
+  font-size: smaller;
+}
+
+.left-arrow {
+  left: 0.5rem;
+}
+
+.right-arrow {
+  right: 0.5rem;
+}

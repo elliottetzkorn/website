@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<head>
+  <title>Elliott Etzkorn</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preload" href="click1.m4a" as="fetch" type="audio/mp4">
+  <link rel="preload" href="click2.m4a" as="fetch" type="audio/mp4">
+  <link rel="preload" href="8.mp3" as="fetch" type="audio/mp3">
+</head>
+
+<body>
+  <img src="8.jpg" id="mainImage" class="main-image" alt="Spring blossoms">
+
+  <div>
+    Elliott Etzkorn
+    <br>
+    <i style="color: limegreen">
+      spring blossoms
+      <br>
+      sonoma, ca
+    </i>
+    <br>
+    <small class="contact-info">
+      call:
+      <a href="tel:+16126694184">+1 612-669-4184</a>
+      <br>
+      write:
+      <a href="mailto:mail@elliottetzkorn.com">mail@elliottetzkorn.com</a>
+    </small>
+  </div>
+
+  <a href="7.html" class="left-arrow">←</a>
+
+  <script>
+    const backgroundAudio = new Audio('8.mp3');
+    const clickSound2 = new Audio('click2.m4a');
+    const clickSound1 = new Audio('click1.m4a');
+    let isPlaying = false;
+
+    document.getElementById('mainImage').addEventListener('click', () => {
+      if (isPlaying) {
+        backgroundAudio.pause();
+        clickSound2.play();
+      } else {
+        clickSound1.play();
+        backgroundAudio.play();
+      }
+      document.getElementById('mainImage').classList.toggle('playing');
+      isPlaying = !isPlaying;
+    });
+
+    backgroundAudio.addEventListener('ended', () => {
+      if (isPlaying) {
+        document.getElementById('mainImage').classList.remove('playing');
+        isPlaying = false;
+      }
+    });
+  </script>
+</body>
