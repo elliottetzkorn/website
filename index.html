@@ -1,67 +1,60 @@
+<!DOCTYPE html>
+
 <head>
-    <title>Elliott Etzkorn</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            font-family: sans-serif;
-            line-height: 1.6;
-            background-color: #f5ddd3;
-            color: #008f4d;
-            padding: 0.5rem
-        }
-
-        a {
-            color: #fd4b97;
-            text-decoration: none
-        }
-
-        a:visited {
-            color: #a76a9b
-        }
-
-        a:visited:hover {
-            color: #9b5a8c
-        }
-
-        a:visited:active {
-            color: #7a4a6e
-        }
-
-        a:hover {
-            color: #a94b6d;
-            text-decoration: underline
-        }
-
-        a:active {
-            color: #6d3a5e;
-            text-decoration: underline
-        }
-
-        a:focus-visible {
-            outline: solid 2px #fd4b97
-        }
-    </style>
+  <title>Elliott Etzkorn</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preload" href="click1.m4a" as="fetch" type="audio/mp4">
+  <link rel="preload" href="click2.m4a" as="fetch" type="audio/mp4">
+  <link rel="preload" href="8.mp3" as="fetch" type="audio/mp3">
 </head>
 
 <body>
-    <img src="11.jpeg" style="height: 144px;" />
-    <img src="13.jpeg" style="height: 144px;" />
-    <img src="14.jpeg" style="height: 144px;" />
-    <p>
-        <b>Elliott Etzkorn</b> is an engineer. He is building new versions of
-        <a href="https://wikimedia.org">Wikimedia</a>. He founded and is improving
-        <a href="https://t4t.social">t4t</a>. He helped develop
-        <a href="https://pingpractice.org">Ping Practice</a>.
-    </p>
-    <p>
-        He is living in a cabin on the northwestern edge of <a
-            href="https://en.wikipedia.org/wiki/Ashokan_Reservoir">Ashokan Reservoir</a>.
-    </p>
-    <p>
-        You can call him at <a href="tel:+16126694184">+1 612-669-4184</a> or write him at <a
-            href="mailto:mail@elliottetzkorn.com">mail@elliottetzkorn.com</a>.
-    </p>
-    <p>
-        He reconsiders himself and <a href="8.html">this website</a> often.
-    </p>
+  <img src="8.jpg" id="mainImage" class="main-image" alt="Spring blossoms">
+
+  <div>
+    Elliott Etzkorn
+    <br>
+    <i style="color: limegreen">
+      spring blossoms
+      <br>
+      sonoma, ca
+    </i>
+    <br>
+    <small class="contact-info">
+      call:
+      <a href="tel:+16126694184">+1 612-669-4184</a>
+      <br>
+      write:
+      <a href="mailto:mail@elliottetzkorn.com">mail@elliottetzkorn.com</a>
+    </small>
+  </div>
+
+  <a href="7.html" class="left-arrow">←</a>
+
+  <script>
+    const backgroundAudio = new Audio('8.mp3');
+    const clickSound2 = new Audio('click2.m4a');
+    const clickSound1 = new Audio('click1.m4a');
+    let isPlaying = false;
+
+    document.getElementById('mainImage').addEventListener('click', () => {
+      if (isPlaying) {
+        backgroundAudio.pause();
+        clickSound2.play();
+      } else {
+        clickSound1.play();
+        backgroundAudio.play();
+      }
+      document.getElementById('mainImage').classList.toggle('playing');
+      isPlaying = !isPlaying;
+    });
+
+    backgroundAudio.addEventListener('ended', () => {
+      if (isPlaying) {
+        document.getElementById('mainImage').classList.remove('playing');
+        isPlaying = false;
+      }
+    });
+  </script>
 </body>
