@@ -16,7 +16,7 @@ body {
   filter: hue-rotate(20deg) brightness(1.16);
 }
 
-.contact-info {
+small {
   color: gray;
 }
 
