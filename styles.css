@@ -34,3 +34,28 @@ small {
 .right-arrow {
   right: 0.5rem;
 }
+
+.gradient-sphere {
+  position: fixed;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  background: radial-gradient(circle at center,
+    white,
+    purple,
+    white,
+    white);
+  box-shadow: none;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.gradient-sphere:hover {
+  opacity: 1;
+}
