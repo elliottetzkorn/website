@@ -1,61 +1,234 @@
 <!DOCTYPE html>
-
+<html>
 <head>
   <title>Elliott Etzkorn</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="preload" href="click1.m4a" as="fetch" type="audio/mp4">
-  <link rel="preload" href="click2.m4a" as="fetch" type="audio/mp4">
-  <link rel="preload" href="9.mp3" as="fetch" type="audio/mp3">
+  <style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  /* display: flex; // Removed for no centering */
+  /* justify-content: center; // Removed for no centering */
+  /* align-items: center; // Removed for no centering */
+  min-height: 100vh;
+  margin: 0; /* Keep margin 0 for full width potential */
+  padding: 20px; /* Keep padding for spacing around card if it's at the top-left */
+  box-sizing: border-box;
+  background-color: #FFFFFF; /* Plain white background */
+}
+
+
+
+.profile-header {
+  display: flex;
+  align-items: center; /* Vertically align image and name */
+  justify-content: flex-start; /* Explicitly left-align content */
+  margin-bottom: 16px; /* Increased space below header */
+}
+
+.profile-picture {
+  width: 80px; /* Adjusted for side-by-side */
+  height: 80px; /* Adjusted for side-by-side */
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 15px; /* Space between image and name */
+  /* margin-bottom: 16px; // Reverted */
+  flex-shrink: 0;
+}
+
+.name {
+  font-size: 24px;
+  font-weight: 600;
+  /* margin-bottom: 4px; // Reverted, now handled by .profile-header's margin */
+  color: #333;
+  text-align: left; /* Align name to the left within its flex item space */
+}
+
+.subtitle {
+  font-size: 16px;
+  color: gray;
+  margin-bottom: 16px; /* Restored for spacing above action buttons */
+  text-align: left; /* Ensure subtitle is also left-aligned if header is */
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: center; /* This will center the buttons */
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.action-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #007aff;
+  font-size: 12px;
+}
+
+.action-button-icon {
+  background-color: #007aff;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 6px;
+  font-size: 20px;
+}
+.action-button-icon.message::before { content: "💬"; }
+.action-button-icon.call::before { content: "📞"; }
+.action-button-icon.video::before { content: "📹"; }
+.action-button-icon.mail::before { content: "✉️"; }
+
+.contact-details {
+  text-align: left;
+  /* border-top: 1px solid #e0e0e0; // Removed */
+  /* padding-top: 16px; // Removed as it was for the border-top */
+}
+
+.contact-item {
+  margin-bottom: 12px; /* This will now be space *above* the border of the next item if padding is also used */
+  padding-bottom: 12px; /* Space between text and its own bottom border */
+  display: flex;
+  align-items: flex-start;
+}
+
+/* Apply border to direct .contact-item children of .contact-details if not the last child */
+.contact-details > .contact-item:not(:last-child) {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* Apply border to .email-group if it\'s not the last child of .contact-details */
+.contact-details > .email-group:not(:last-child) {
+  border-bottom: 1px solid #e0e0e0;
+  /* Add padding to the bottom of the group to match the padding of individual items */
+  padding-bottom: 12px; 
+  margin-bottom: 12px;
+}
+
+/* Ensure .contact-items within .email-group have their internal spacing but no borders */
+.email-group .contact-item {
+  border-bottom: none; /* Explicitly remove borders from items within the group */
+}
+
+/* Reduce margin-bottom for items in email-group that are not the last, to tighten internal spacing */
+.email-group > .contact-item:not(:last-child) {
+  margin-bottom: 4px; /* Reduced space between home and work email */
+  padding-bottom: 0; /* Remove padding to bring them closer, rely on margin */
+}
+
+/* The last contact-item within an email-group should not have extra bottom margin/padding 
+   if the group itself is providing the main spacing/border */
+.email-group > .contact-item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* If a .contact-item is the last one in .contact-details (e.g. the last note),
+   it shouldn\'t have the padding that implies a border is coming. */
+.contact-details > .contact-item:last-child {
+    padding-bottom: 0; 
+}
+/* Similarly, if an email-group is the very last thing */
+.contact-details > .email-group:last-child {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.contact-item-label {
+  font-size: 13px;
+  color: gray;
+  width: 80px;
+  flex-shrink: 0;
+  margin-right: 10px;
+  text-align: right;
+}
+
+.contact-item-value {
+  font-size: 14px;
+  color: #333;
+  word-break: break-word;
+}
+
+.contact-item-value a {
+  color: #007aff;
+  text-decoration: none;
+}
+
+.contact-item-value a:hover {
+  text-decoration: underline;
+}
+
+/* Removed all @keyframes and pseudo-element styles. 
+   Any other specific element styles not related to the contact card 
+   that were part of the animations (e.g., .main-image if it was different from .profile-picture) 
+   would also be removed if they existed and were unused. 
+   The .left-arrow and .gradient-sphere styles are confirmed to be unused from previous steps. */
+  </style>
 </head>
-
 <body>
-  <img src="9.jpg" id="mainImage" class="main-image" alt="i am 33!">
 
-  <div>
-    Elliott Etzkorn
-    <br>
-    <i style="color: rosybrown">
-      i am 33!
-      <br>
-      istanbul, tr
-    </i>
-    <br>
-    <small>
-      call:
-      <a href="tel:+16126694184">+1 612-669-4184</a>
-      <br>
-      write:
-      <a href="mailto:mail@elliottetzkorn.com">mail@elliottetzkorn.com</a>
-    </small>
+  <div class="contact-card">
+    <div class="profile-header">
+      <img src="portrait.jpg" alt="Elliott Etzkorn" class="profile-picture">
+      <div class="name">Elliott Etzkorn</div>
+    </div>
+    <div class="subtitle">
+      
+      
+    </div>
+
+    <div class="action-buttons">
+      <a href="sms:+16126694184" class="action-button">
+        <span class="action-button-icon message"></span>
+        message
+      </a>
+      <a href="tel:+16126694184" class="action-button">
+        <span class="action-button-icon call"></span>
+        call
+      </a>
+      <a href="facetime:+16126694184" class="action-button">
+        <span class="action-button-icon video"></span>
+        video
+      </a>
+      <a href="mailto:mail@elliottetzkorn.com" class="action-button">
+        <span class="action-button-icon mail"></span>
+        mail
+      </a>
+    </div>
+
+    <div class="contact-details">
+      <div class="contact-item">
+        <div class="contact-item-label">mobile</div>
+        <div class="contact-item-value"><a href="tel:+16126694184">+1 (612) 669-4184</a></div>
+      </div>
+      <div class="email-group">
+        <div class="contact-item">
+          <div class="contact-item-label">home</div>
+          <div class="contact-item-value"><a href="mailto:mail@elliottetzkorn.com">mail@elliottetzkorn.com</a></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-label">work</div>
+          <div class="contact-item-value"><a href="mailto:etz@wikimedia.org">etz@wikimedia.org</a></div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-label">homepage</div>
+        <div class="contact-item-value"><a href="https://elliottetzkorn.com" target="_blank">https://elliottetzkorn.com</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-label">home</div>
+        <div class="contact-item-value">5 Bradkin Rd<br>Boiceville NY 12412</div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-label">note</div>
+        <div class="contact-item-value">i am 33!<br>istanbul, tr</div> <!-- Add note content if any -->
+      </div>
+    </div>
   </div>
 
-  <a href="8.html" class="left-arrow">←</a>
-  <a href="https://makisoftware.com" class="gradient-sphere"></a>
-
-  <script>
-    const backgroundAudio = new Audio('9.mp3');
-    const clickSound2 = new Audio('click2.m4a');
-    const clickSound1 = new Audio('click1.m4a');
-    let isPlaying = false;
-
-    document.getElementById('mainImage').addEventListener('click', () => {
-      if (isPlaying) {
-        backgroundAudio.pause();
-        clickSound2.play();
-      } else {
-        clickSound1.play();
-        backgroundAudio.play();
-      }
-      document.getElementById('mainImage').classList.toggle('playing');
-      isPlaying = !isPlaying;
-    });
-
-    backgroundAudio.addEventListener('ended', () => {
-      if (isPlaying) {
-        document.getElementById('mainImage').classList.remove('playing');
-        isPlaying = false;
-      }
-    });
-  </script>
 </body>
+</html>
