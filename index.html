@@ -32,14 +32,19 @@
 
     .name {
       font-size: 24px;
-      font-weight: 600;
       text-align: left;
+      margin-bottom: 4px;
+    }
+
+    .name-and-subtitle-wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     .subtitle {
       font-size: 16px;
-      color: gray;
-      margin-bottom: 16px;
+      color: #999999;
       text-align: left;
     }
 
@@ -47,7 +52,7 @@
       display: flex;
       justify-content: center;
       gap: 2rem;
-      margin-bottom: 3rem;
+      margin-bottom: 2rem;
     }
 
     .action-button {
@@ -140,11 +145,12 @@
   <div class="contact-card">
     <div class="profile-header">
       <img src="portrait.jpg" alt="Elliott Etzkorn" class="profile-picture">
-      <div class="name">Elliott Etzkorn</div>
-    </div>
-    <div class="subtitle">
-      
-      
+      <div class="name-and-subtitle-wrapper">
+        <div class="name">Elliott Etzkorn</div>
+        <div class="subtitle">
+          he, him, his
+        </div>
+      </div>
     </div>
 
     <div class="action-buttons">
