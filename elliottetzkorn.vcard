@@ -1,0 +1,17 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Etzkorn;Elliott;;;
+FN:Elliott Etzkorn
+ORG:founder of t4t
+TEL;TYPE=CELL:+16126694184
+EMAIL;TYPE=HOME:mail@elliottetzkorn.com
+EMAIL;TYPE=WORK:etz@wikimedia.org
+URL;TYPE=projects:https://makisoftware.com
+URL;TYPE=tiktok:https://tiktok.com/@elliottetzkorn
+URL;TYPE=instagram:https://instagram.com/elliottetzkorn
+URL;TYPE=are.na:https://are.na/elliott-etzkorn
+BDAY:19920430
+ADR;TYPE=HOME:;;Traver Hollow Rd;Boiceville;NY;12412;USA
+NOTE:I am on a laptop next to a fire I built. My cat is curled up purring. I can hear a couple of birds still outside. Every minute more and more grasshoppers sound as the day turns to night.
+PHOTO;VALUE=URI:clouds.jpg
+END:VCARD
