@@ -108,7 +108,7 @@
 
     .label {
       font-size: 13px;
-      color: #999999;
+      color: #888888;
       width: 80px;
       flex-shrink: 0;
       margin-right: 14px;
@@ -117,6 +117,33 @@
 
     .value {
       font-size: 14px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: #1e1e1e;
+        color: white;
+      }
+      .subtitle {
+        color: #888888;
+      }
+      .action-button {
+        color: #0A84FF;
+      }
+      .icon {
+        background-color: #0A84FF;
+        color: white;
+      }
+      .details > .item:not(:last-child),
+      .details > .group:not(:last-child) {
+        border-bottom: 1px solid #333333;
+      }
+      .label {
+        color: #999999;
+      }
+      a:link { color: #0A84FF; }
+      a:visited { color: #6d4b8d; }
+      a:active { color: #ff4040; }
     }
   </style>
 </head>
