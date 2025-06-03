@@ -1,0 +1,42 @@
+```yaml
+ name: Deploy to Firebase Hosting
+
+ on:
+   push:
+     branches:
+       - main # Or the name of your main development branch (e.g., master)
+
+ jobs:
+   deploy:
+     runs-on: ubuntu-latest
+     steps:
+       - name: Checkout code
+         uses: actions/checkout@v4
+
+       - name: Set up Node.js
+         uses: actions/setup-node@v4
+         with:
+           node-version: 'lts/*'
+
+       - name: Install Firebase CLI
+         run: npm install -g firebase-tools
+
+       - name: Deploy to Firebase Hosting
+         run: firebase deploy --only hosting --token "${{ secrets.FIREBASE_DEPLOY_TOKEN }}"
+ ```
+
+ **Explanation of the Workflow:**
+
+ * **`name: Deploy to Firebase Hosting`**: This sets the name of your GitHub Actions workflow.
+ * **`on: push: branches: - main`**: This defines when the workflow will run. In this case, it's triggered whenever code is pushed to the `main` branch of your repository. **Make sure to replace `main` with the actual name of your primary branch if it's different (e.g., `master`).**
+ * **`jobs: deploy:`**: This defines a single job named `deploy`.
+ * **`runs-on: ubuntu-latest`**: This specifies that the job will run on a clean, latest version of Ubuntu Linux.
+ * **`steps:`**: This is a sequence of tasks that will be executed within the `deploy` job:
+     * **`- name: Checkout code`**: This step uses the `actions/checkout@v4` action to download your repository's code to the runner.
+     * **`- name: Set up Node.js`**: This step uses the `actions/setup-node@v4` action to set up a Node.js environment, which is required to run the Firebase CLI. `lts/*` ensures you're using a Long-Term Support version of Node.js.
+     * **`- name: Install Firebase CLI`**: This step installs the Firebase CLI globally on the runner.
+     * **`- name: Deploy to Firebase Hosting`**: This is the crucial deployment step.
+         * `run: firebase deploy --only hosting --token "${{ secrets.FIREBASE_DEPLOY_TOKEN }}"`
+         * `firebase deploy`: This is the Firebase CLI command to deploy your project.
+         * `--only hosting`: This flag ensures that only the hosting configuration and files are deployed.
+         * `--token "${{ secrets.FIREBASE_DEPLOY_TOKEN }}"`: This securely passes the Firebase deploy token (which you stored as a GitHub secret) to the Firebase CLI for authentication.
