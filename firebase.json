@@ -5,6 +5,21 @@
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
+    ],
+    "headers": [
+      {
+        "source": "elliottetzkorn.vcf",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "text/vcard"
+          },
+          {
+            "key": "Content-Disposition",
+            "value": "attachment; filename=\"elliottetzkorn.vcf\""
+          }
+        ]
+      }
     ]
   }
 }
