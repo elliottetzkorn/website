@@ -12,7 +12,7 @@
         "headers": [
           {
             "key": "Content-Type",
-            "value": "text/vcard"
+            "value": "text/x-vcard"
           },
           {
             "key": "Content-Disposition",
