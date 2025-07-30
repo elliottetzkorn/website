@@ -6,15 +6,19 @@
   <link rel="icon" href="clouds.jpg" type="image/jpeg">
   <style>
     body {
-      font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
       margin: 20px;
       padding-bottom: 2rem;
+      line-height: 1.4;
     }
+
+    a:link, .button { color: blue }
+    a:visited { color: purple }
+    a:active { color: red }
 
     .header {
       display: flex;
       align-items: center;
-      justify-content: flex-start;
       margin-bottom: 1.5rem;
     }
 
@@ -28,14 +32,12 @@
 
     .name {
       font-size: 24px;
-      text-align: left;
       margin-bottom: 4px;
     }
 
     .subtitle {
       font-size: 16px;
-      color: #999999;
-      text-align: left;
+      color: #999;
     }
 
     .buttons {
@@ -50,59 +52,27 @@
       flex-direction: column;
       align-items: center;
       text-decoration: none;
-      color: blue;
       font-size: 12px;
     }
 
-    .icon {
-      background-color: blue;
-      color: white;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      margin-bottom: 6px;
-      background: blue url("") no-repeat center center / 22px 22px;
-    }
-
-    .icon.message { background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' fill='%23FFFFFF' viewBox='0 0 256 256'%3E%3Cpath d='M232,128A104,104,0,0,1,79.12,219.82L45.07,231.17a16,16,0,0,1-20.24-20.24l11.35-34.05A104,104,0,1,1,232,128Z'%3E%3C/path%3E%3C/svg%3E"); }
-    .icon.call { background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' fill='%23FFFFFF' viewBox='0 0 256 256'%3E%3Cpath d='M231.88,175.08A56.26,56.26,0,0,1,176,224C96.6,224,32,159.4,32,80A56.26,56.26,0,0,1,80.92,24.12a16,16,0,0,1,16.62,9.52l21.12,47.15,0,.12A16,16,0,0,1,117.39,96c-.18.27-.37.52-.57.77L96,121.45c7.49,15.22,23.41,31,38.83,38.51l24.34-20.71a8.12,8.12,0,0,1,.75-.56,16,16,0,0,1,15.17-1.4l.13.06,47.11,21.11A16,16,0,0,1,231.88,175.08Z'%3E%3C/path%3E%3C/svg%3E"); }
-    .icon.mail { background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' fill='%23FFFFFF' viewBox='0 0 32 32'%3E%3Cpath d='M15.3188 18.7375L13.8188 17.3563L4 25.5H28L18.1712 17.3563L16.6712 18.7375C16.4868 18.9069 16.2454 19.0008 15.995 19.0008C15.7446 19.0008 15.5032 18.9069 15.3188 18.7375Z M3 7.5V24L12.3387 16L3 7.5Z M28 6H4L16 16.6437L28 6Z M29 24V7.5L19.6612 16L29 24Z M4 25.5C4.37507 25.8751 4.46957 26 5 26H27C27.5304 26 27.6249 25.8751 28 25.5H4Z'%3E%3C/path%3E%3C/svg%3E"); }
-    .icon.save { background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' fill='%23FFFFFF' viewBox='0 0 256 256'%3E%3Cpath d='M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34Zm-56,83.32-24,24a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L120,164.69V120a8,8,0,0,1,16,0v44.69l10.34-10.35a8,8,0,0,1,11.32,11.32ZM152,88V44l44,44Z'%3E%3C/path%3E%3C/svg%3E"); }
-
     .item {
-      margin-bottom: 12px;
-      padding-bottom: 12px;
       display: flex;
       align-items: flex-start;
     }
 
-    .details > .item:not(:last-child) {
-      border-bottom: 1px solid #e0e0e0;
+    .details > * + * {
+      border-top: 1px solid #e0e0e0;
+      margin-top: 12px;
+      padding-top: 12px;
     }
 
-    .details > .group:not(:last-child) {
-      border-bottom: 1px solid #e0e0e0;
-      padding-bottom: 12px;
-      margin-bottom: 12px;
-    }
-
-    .group .item {
-      border-bottom: none;
-      padding-bottom: 0;
-      margin-bottom: 4px;
-    }
-    .group .item:last-child {
-      margin-bottom: 0;
-    }
-
-    .details > :is(.item, .group):last-child {
-      padding-bottom: 0;
-      margin-bottom: 0;
+    .group .item + .item {
+      margin-top: 4px;
     }
 
     .label {
       font-size: 13px;
-      color: #888888;
+      color: #888;
       width: 80px;
       flex-shrink: 0;
       margin-right: 14px;
@@ -113,31 +83,30 @@
       font-size: 14px;
     }
 
+    .icon {
+      background: blue no-repeat center center / 22px 22px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-bottom: 6px;
+    }
+
+    .icon.message { background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' fill='%23FFFFFF' viewBox='0 0 256 256'%3E%3Cpath d='M232,128A104,104,0,0,1,79.12,219.82L45.07,231.17a16,16,0,0,1-20.24-20.24l11.35-34.05A104,104,0,1,1,232,128Z'%3E%3C/path%3E%3C/svg%3E") }
+    .icon.call { background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' fill='%23FFFFFF' viewBox='0 0 256 256'%3E%3Cpath d='M231.88,175.08A56.26,56.26,0,0,1,176,224C96.6,224,32,159.4,32,80A56.26,56.26,0,0,1,80.92,24.12a16,16,0,0,1,16.62,9.52l21.12,47.15,0,.12A16,16,0,0,1,117.39,96c-.18.27-.37.52-.57.77L96,121.45c7.49,15.22,23.41,31,38.83,38.51l24.34-20.71a8.12,8.12,0,0,1,.75-.56,16,16,0,0,1,15.17-1.4l.13.06,47.11,21.11A16,16,0,0,1,231.88,175.08Z'%3E%3C/path%3E%3C/svg%3E") }
+    .icon.mail { background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' fill='%23FFFFFF' viewBox='0 0 32 32'%3E%3Cpath d='M15.3188 18.7375L13.8188 17.3563L4 25.5H28L18.1712 17.3563L16.6712 18.7375C16.4868 18.9069 16.2454 19.0008 15.995 19.0008C15.7446 19.0008 15.5032 18.9069 15.3188 18.7375Z M3 7.5V24L12.3387 16L3 7.5Z M28 6H4L16 16.6437L28 6Z M29 24V7.5L19.6612 16L29 24Z M4 25.5C4.37507 25.8751 4.46957 26 5 26H27C27.5304 26 27.6249 25.8751 28 25.5H4Z'%3E%3C/path%3E%3C/svg%3E") }
+    .icon.save { background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' fill='%23FFFFFF' viewBox='0 0 256 256'%3E%3Cpath d='M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34Zm-56,83.32-24,24a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L120,164.69V120a8,8,0,0,1,16,0v44.69l10.34-10.35a8,8,0,0,1,11.32,11.32ZM152,88V44l44,44Z'%3E%3C/path%3E%3C/svg%3E") }
+
     @media (prefers-color-scheme: dark) {
       body {
         background-color: black;
         color: white;
       }
-      .subtitle {
-        color: #888888;
-      }
-      .button {
-        color: #0A84FF;
-      }
-      .icon {
-        background-color: #0A84FF;
-        color: white;
-      }
-      .details > .item:not(:last-child),
-      .details > .group:not(:last-child) {
-        border-bottom: 1px solid #333333;
-      }
-      .label {
-        color: #999999;
-      }
-      a:link { color: #0A84FF; }
-      a:visited { color: #6d4b8d; }
-      a:active { color: #ff4040; }
+      .subtitle, .label { color: #888 }
+      .button, a:link { color: #0A84FF }
+      .icon { background-color: #0A84FF }
+      .details > * + * { border-color: #333 }
+      a:visited { color: #6d4b8d }
+      a:active { color: #ff4040 }
     }
   </style>
 </head>
@@ -146,9 +115,7 @@
     <img src="clouds.jpg" alt="Clouds" class="picture">
     <div>
       <div class="name">Elliott Etzkorn</div>
-      <div class="subtitle">
-        founder of t4t
-      </div>
+      <div class="subtitle">founder of t4t</div>
     </div>
   </div>
 
@@ -161,12 +128,11 @@
       <span class="icon call"></span>
       call
     </a>
-   
     <a href="mailto:mail@elliottetzkorn.com" class="button">
       <span class="icon mail"></span>
       mail
     </a>
-    <a href="elliottetzkorn.vcard" class="button" download>
+    <a href="elliottetzkorn.vcf" class="button" download>
       <span class="icon save"></span>
       save
     </a>
@@ -211,11 +177,11 @@
     </div>
     <div class="item">
       <div class="label">home</div>
-      <div class="value">Traver Hollow Rd<br>Boiceville NY 12412</div>
+      <div class="value">Traver Hollow<br/>Olive New York</div>
     </div>
     <div class="item">
       <div class="label">note</div>
-      <div class="value">I am on a laptop next to a fire I built. My cat is curled up purring. I can hear a couple of birds still outside. Every minute more and more grasshoppers sound as the day turns to night.</div>
+      <div class="value">What is your favorite place to work?</div>
     </div>
   </div>
 </body>
